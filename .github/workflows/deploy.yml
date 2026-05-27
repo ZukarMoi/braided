@@ -1,0 +1,62 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]       # main に push → ビルド + デプロイ
+  pull_request:
+    branches: [main]       # PR → ビルドのみ（デプロイなし）
+
+# GitHub Pages へのデプロイに必要な権限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同時デプロイを防ぐ（進行中のデプロイはキャンセルしない）
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      # 1. コードを取得
+      - uses: actions/checkout@v4
+
+      # 2. Node.js セットアップ
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # 3. 依存パッケージをインストール（lock ファイル通りに厳密に）
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. 型チェック + 本番ビルド（GitHub Pages 用ベース URL を指定）
+      - name: Build
+        run: npm run build
+        env:
+          VITE_BASE: /braided/
+
+      # 5. 以下は main ブランチへの push 時のみ実行
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        if: github.ref == 'refs/heads/main'
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        if: github.ref == 'refs/heads/main'

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="96" fill="#1e1b2e"/>
+
+  <!-- Braided thread design: 3 strands weaving together -->
+  <!-- Strand 1 (left, indigo) -->
+  <path d="M 150 100 C 150 160, 220 190, 220 256 C 220 322, 150 352, 150 412"
+        stroke="#818cf8" stroke-width="28" stroke-linecap="round" fill="none"/>
+  <!-- Strand 2 (center, violet) -->
+  <path d="M 256 80 C 256 150, 180 200, 180 256 C 180 312, 256 362, 256 432"
+        stroke="#a78bfa" stroke-width="28" stroke-linecap="round" fill="none"/>
+  <!-- Strand 3 (right, indigo) -->
+  <path d="M 362 100 C 362 160, 292 190, 292 256 C 292 322, 362 352, 362 412"
+        stroke="#818cf8" stroke-width="28" stroke-linecap="round" fill="none"/>
+
+  <!-- Cross-weave highlights -->
+  <path d="M 150 180 Q 256 220, 362 180"
+        stroke="#c4b5fd" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.7"/>
+  <path d="M 362 332 Q 256 292, 150 332"
+        stroke="#c4b5fd" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.7"/>
+</svg>

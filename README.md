@@ -83,6 +83,13 @@ npm run build
 
 ## License
 
-[MIT + Commons Clause](./LICENSE) — Free to use and modify; commercial resale is not permitted.
+Copyright (c) 2026 Zukar Moi
 
-See [LICENSE](./LICENSE) for full terms including third-party AI service disclaimers.
+This software is licensed under **MIT License with Commons Clause and Additional Conditions**. See [LICENSE](./LICENSE) for the full text.
+
+**Summary:**
+
+- **PART 1 – MIT License** — Free to use, modify, and distribute.
+- **PART 2 – Commons Clause** — Commercial resale of this software as a product or service is not permitted.
+- **PART 3 – Third-Party AI Services Disclaimer** — Users are solely responsible for compliance with the terms of service of any AI provider (OpenAI, Anthropic, Google, xAI, Meta, Mistral, etc.) connected through this software. No API keys or model weights are included.
+- **PART 4 – Additional Conditions** — Redistributions must retain the original license and copyright notice. Modified versions must be clearly marked as such.
