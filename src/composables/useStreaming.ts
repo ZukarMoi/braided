@@ -117,8 +117,12 @@ export function useStreaming() {
       const qChain = sessionStore.getMainQChain(s)
       const lastQ = qChain[qChain.length - 1]
       if (lastQ) {
+        // getMainQChain と同じ優先順で親を決める: sigma → 単一統合 → Q自身
         const sigma = s.nodes.find(n => n.parentId === lastQ.id && n.type === 'sigma')
-        parentId = sigma ? sigma.id : lastQ.id
+        const lastCons = s.nodes
+          .filter(n => n.parentId === lastQ.id && n.type === 'consolidation' && !n.parentIds)
+          .at(-1) ?? null
+        parentId = sigma?.id ?? lastCons?.id ?? lastQ.id
       }
     }
 

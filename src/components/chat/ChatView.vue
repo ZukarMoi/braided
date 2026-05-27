@@ -39,9 +39,11 @@ const emits = defineEmits<{
   toggleContextPanel: []
 }>()
 
-// Expose scroll helper for parent
+// ノード数の変化（統合・シグマ完了など）でもスクロールを追従させる
+const nodeCount = computed(() => s.value?.nodes.length ?? 0)
+
 watch(
-  [topLevelQNodes, mergeNodes],
+  [topLevelQNodes, mergeNodes, crossConsolidationNodes, nodeCount],
   async () => {
     await nextTick()
     const el = document.getElementById('chat')

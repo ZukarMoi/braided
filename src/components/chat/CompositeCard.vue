@@ -146,7 +146,8 @@ function handleConsolidateFromFooter() {
 
 function handleContinueBelow() {
   const lastCons = consolidationNodes.value[consolidationNodes.value.length - 1]
-  const target   = lastCons ?? rNodes.value[rNodes.value.length - 1]
+  // 統合ノード → シグマノード → 最後のRノード の優先順でブランチ元を決める
+  const target   = lastCons ?? sigmaNode.value ?? rNodes.value[rNodes.value.length - 1]
   if (!target) return
   uiStore.continueModel = null
   sessionStore.setBranchCtx(target.id)
@@ -360,9 +361,9 @@ const hasNextQ = computed(() => {
     </template>
   </div>
 
-  <!-- 続けて質問ボタン（depth=0・統合済み・続きがまだない場合のみ） -->
+  <!-- 続けて質問ボタン（depth=0・回答完了後・統合orシグマあり・続きがまだない場合） -->
   <div
-    v-if="depth === 0 && isComplete && consolidationNodes.length && !hasNextQ"
+    v-if="depth === 0 && isComplete && (consolidationNodes.length || sigmaNode) && !hasNextQ"
     class="cc-continue-below"
   >
     <button class="cc-continue-btn" @click="handleContinueBelow">
