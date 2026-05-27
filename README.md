@@ -63,6 +63,53 @@ npm run build
 
 ---
 
+## Local AI Setup
+
+### Ollama
+
+**CLI (terminal launch)**
+
+Add to `~/.zshrc` (or `~/.bashrc`):
+```bash
+export OLLAMA_HOST=0.0.0.0:11434
+export OLLAMA_ORIGINS="*"
+```
+Then launch with `ollama serve`.
+
+**macOS App (menu bar)**
+
+The app runs as a launchd service and does not read `.zshrc`. Set environment variables with:
+```bash
+launchctl setenv OLLAMA_ORIGINS "*"
+launchctl setenv OLLAMA_HOST "0.0.0.0:11434"
+```
+Then quit and restart Ollama from the menu bar.
+
+> **Note:** When using Braided from a hosted URL (e.g. GitHub Pages), the above ORIGINS setting is required for the browser to allow cross-origin requests to localhost.
+
+---
+
+### LM Studio
+
+1. Open LM Studio → **Local Server** tab
+2. Load a model and start the server (default: `http://localhost:1234`)
+3. In Braided's Settings, set the LM Studio URL to `http://localhost:1234`
+4. Enable **CORS** in LM Studio's server settings
+
+> LM Studio exposes an OpenAI-compatible API. The same hosted URL restriction applies — local access via `localhost:5173` is recommended when using local models.
+
+---
+
+### AnythingLLM
+
+1. Start AnythingLLM and create a **Workspace**
+2. Note the workspace **slug** (shown in the URL, e.g. `my-workspace`)
+3. In Braided's Settings, set the AnythingLLM URL (default: `http://localhost:3001`)
+4. Enter the API key if authentication is enabled (Settings → API Keys in AnythingLLM)
+5. The workspace slug is used as the model name in Braided
+
+---
+
 ## Tech Stack
 
 - [Vue 3](https://vuejs.org) + TypeScript + [Vite](https://vitejs.dev)
