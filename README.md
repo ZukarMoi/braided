@@ -110,6 +110,23 @@ Then quit and restart Ollama from the menu bar.
 
 ---
 
+## Device Compatibility
+
+| Device | Browser | PWA | Local AI |
+|--------|---------|-----|----------|
+| **Mac** | ✅ | ✅ Chrome / Edge / Safari | ✅ Ollama / LM Studio (localhost) |
+| **Android** | ✅ | ✅ Chrome | ⚠️ Requires CORS + ORIGINS config on Ollama |
+| **iPhone / iPad** | ✅ Cloud AI only | ✅ Safari "Add to Home Screen" | ❌ Not supported |
+
+### Notes
+
+- **Local AI from hosted URL (GitHub Pages):** Browsers block HTTP requests from an HTTPS page to `localhost` (Mixed Content / Private Network Access policy). On Mac and Android you can work around this by configuring Ollama's `ORIGINS` setting (see [Local AI Setup](#local-ai-setup) below); on iOS all browsers use WebKit and the restriction cannot be bypassed.
+- **PWA on Android:** Install via Chrome → three-dot menu → *Add to Home Screen*. The app opens directly without the browser UI.
+- **PWA on iOS:** Install via Safari → Share → *Add to Home Screen*. Cloud AI providers work normally; local AI is unavailable.
+- **Recommended workflow:** Use the hosted URL (`https://zukarmoi.github.io/braided/`) for cloud AI on any device; use the local dev server (`http://localhost:5173`) for Ollama / LM Studio on Mac.
+
+---
+
 ## Tech Stack
 
 - [Vue 3](https://vuejs.org) + TypeScript + [Vite](https://vitejs.dev)
