@@ -10,14 +10,16 @@ Send a question to multiple AI models at once, branch from any response to dig d
 
 ## Concept
 
-Braided is an **AI-assisted thinking tool** — part mind map, part outliner — designed to help you explore ideas through multiple AI perspectives at once.
+Braided is an **AI-assisted thinking tool** — part mind map, part outliner — designed for **self-brainstorming with multiple AI models as your thinking partners**.
+
+Ask the same question to several models at once and get a room full of different perspectives. Branch from the angle that interests you. Discard what's noise. Compress a thread into a single insight and keep going. The models play the role of diverse collaborators; you play the role of moderator and editor.
 
 Unlike typical AI chat apps that give you one answer to move on from, Braided treats each response as a **node you can branch from, compare, compress, or discard**. You stay in control of what flows into the next question.
 
 **Human-curated context, not RAG.**  
 Rather than relying on automated retrieval (RAG) to decide what's relevant, Braided puts that judgment in your hands. Exclude a response, summarize a thread, inject your own notes, branch from a specific insight — you shape the context that each model sees. This keeps local models fast and the conversation meaningful, without heavy infrastructure.
 
-> AIの回答を"ノード"として扱い、分岐・要約・取捨選択しながら思考を編み上げるツールです。文脈管理を人間が主導することで、RAGなどの重い仕組みなしにローカルモデルでも軽快に動作します。
+> 複数のAIモデルを相手にしたセルフブレインストーミングツールです。AIの回答を"ノード"として分岐・要約・取捨選択しながら思考を編み上げます。文脈管理を人間が主導することで、RAGなどの重い仕組みなしにローカルモデルでも軽快に動作します。
 
 ---
 
