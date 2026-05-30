@@ -2,6 +2,8 @@
 
 **Branch AI perspectives, weave the answer.**
 
+**Think less about AI chat. Think more about AI meetings.**
+
 Send a question to multiple AI models at once, branch from any response to dig deeper, and merge insights into a unified answer.
 
 > 複数のAIに同時に問いを投げ、回答を分岐・統合して答えを編み上げるツールです。
@@ -13,6 +15,8 @@ Send a question to multiple AI models at once, branch from any response to dig d
 Braided is an **AI-assisted thinking tool** — part mind map, part outliner — designed for **self-brainstorming with multiple AI models as your thinking partners**.
 
 Ask the same question to several models at once and get a room full of different perspectives. Branch from the angle that interests you. Discard what's noise. Compress a thread into a single insight and keep going. The models play the role of diverse collaborators; you play the role of moderator and editor.
+
+Braided treats AI models as **colleagues, not oracles**. When models disagree — on contested facts, ethical questions, or uncertain territory — that disagreement is not a failure. **Disagreement is not a bug. Disagreement is information.** Different models reveal different assumptions, biases, and knowledge gaps. That visibility is the point.
 
 Unlike typical AI chat apps that give you one answer to move on from, Braided treats each response as a **node you can branch from, compare, compress, or discard**. You stay in control of what flows into the next question.
 
@@ -26,7 +30,7 @@ Rather than relying on automated retrieval (RAG) to decide what's relevant, Brai
 ## Features
 
 - **Multi-model parallel sending** — Ask all your selected models at once and compare responses side by side
-- **Model policy comparison** — Send the same question to multiple models simultaneously and observe how their responses diverge. Particularly effective for politically sensitive topics, ethical dilemmas, or contested facts — where differences in training data, safety guidelines, and response policies become plainly visible across models in a single view.
+- **Model policy comparison** — Send the same question to multiple models simultaneously and observe how their responses diverge. Particularly effective for politically sensitive topics, ethical dilemmas, or contested facts — where differences in training data, safety guidelines, and response policies become plainly visible across models in a single view. The goal is not consensus — it's visibility into disagreement.
 - **Branch from any response** — Dig deeper into any direction without losing context
 - **Σ (Sigma) summarization** — Let an AI synthesize all responses into a single summary
 - **Consolidation** — Compare, merge, or diff responses across multiple questions
