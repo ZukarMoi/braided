@@ -254,14 +254,14 @@ export const T: Record<Lang, TranslationKeys> = {
       handoff: '🔗 引き継ぎ — 1つを選んで深掘り',
     },
     aiSumPrompt: (q: string, parts: string) =>
-      `以下の質問に対する複数のAIモデルの回答を統合・要約してください。\n\n質問: ${q}\n\n各モデルの回答:\n${parts}\n\n簡潔に要点をまとめてください。`,
+      `以下の質問に対する複数のAIモデルの回答を統合・要約してください。\n\n質問: ${q}\n\n各モデルの回答:\n${parts}\n\n簡潔に要点をまとめてください。（日本語で返答してください）`,
     aiMergePrompt: (strategy: string, nodes: Array<{ label: string; content: string }>) => {
       const body = nodes.map(n => `[${n.label}]\n${n.content}`).join('\n\n---\n\n')
       return ({
-        summary: `以下の複数のAI回答を統合して1つの包括的な回答を作成してください:\n\n${body}`,
-        contrast: `以下の複数のAI回答の類似点と相違点を分析してください:\n\n${body}`,
-        judge: `以下の複数のAI回答を評価し、最も優れた回答を選んで理由を説明してください:\n\n${body}`,
-        handoff: `以下の回答の中から最も有望なものを選び、さらに詳細に展開してください:\n\n${body}`,
+        summary: `以下の複数のAI回答を統合して1つの包括的な回答を作成してください。（日本語で返答してください）\n\n${body}`,
+        contrast: `以下の複数のAI回答の類似点と相違点を分析してください。（日本語で返答してください）\n\n${body}`,
+        judge: `以下の複数のAI回答を評価し、最も優れた回答を選んで理由を説明してください。（日本語で返答してください）\n\n${body}`,
+        handoff: `以下の回答の中から最も有望なものを選び、さらに詳細に展開してください。（日本語で返答してください）\n\n${body}`,
       } as Record<string, string>)[strategy] ?? body
     },
 
@@ -445,14 +445,14 @@ export const T: Record<Lang, TranslationKeys> = {
       handoff: '🔗 Handoff — pick one and go deeper',
     },
     aiSumPrompt: (q: string, parts: string) =>
-      `Summarize and integrate the following AI responses to the question.\n\nQuestion: ${q}\n\nResponses:\n${parts}\n\nProvide a concise synthesis.`,
+      `Summarize and integrate the following AI responses to the question.\n\nQuestion: ${q}\n\nResponses:\n${parts}\n\nProvide a concise synthesis. (Respond in English)`,
     aiMergePrompt: (strategy: string, nodes: Array<{ label: string; content: string }>) => {
       const body = nodes.map(n => `[${n.label}]\n${n.content}`).join('\n\n---\n\n')
       return ({
-        summary: `Synthesize the following AI responses into one comprehensive answer:\n\n${body}`,
-        contrast: `Analyze the similarities and differences between these AI responses:\n\n${body}`,
-        judge: `Evaluate these AI responses and identify the best one with reasoning:\n\n${body}`,
-        handoff: `Select the most promising response below and expand on it in greater depth:\n\n${body}`,
+        summary: `Synthesize the following AI responses into one comprehensive answer. (Respond in English)\n\n${body}`,
+        contrast: `Analyze the similarities and differences between these AI responses. (Respond in English)\n\n${body}`,
+        judge: `Evaluate these AI responses and identify the best one with reasoning. (Respond in English)\n\n${body}`,
+        handoff: `Select the most promising response below and expand on it in greater depth. (Respond in English)\n\n${body}`,
       } as Record<string, string>)[strategy] ?? body
     },
 
