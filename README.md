@@ -10,6 +10,19 @@ Send a question to multiple AI models at once, branch from any response to dig d
 
 ---
 
+## Screenshots
+
+### Multi-model parallel comparison
+![Multi-model comparison](docs/screenshots/multi-model-comparison.png)
+
+### Consolidation & Diff results
+![Consolidation result](docs/screenshots/consolidation-result.png)
+
+### Welcome & setup
+![Welcome screen](docs/screenshots/welcome.png)
+
+---
+
 ## Concept
 
 Braided is an **AI-assisted thinking tool** — part mind map, part outliner — designed for **self-brainstorming with multiple AI models as your thinking partners**.
