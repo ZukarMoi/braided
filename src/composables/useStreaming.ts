@@ -61,10 +61,12 @@ export function useStreaming() {
     modelKey: string,
     historyMessages: ChatMessage[],
   ): Promise<string> {
+    const uiStore = useUiStore()
+    const lang = uiStore.lang
     const historyText = historyMessages
       .map(m => `[${m.role === 'user' ? 'User' : 'AI'}]\n${m.content}`)
       .join('\n\n---\n\n')
-    const prompt = `以下の会話履歴を、重要な情報・文脈・結論を保ちながら簡潔に要約してください。要約のみを出力し、説明文は不要です。\n\n${historyText}`
+    const prompt = T[lang].aiCompressPrompt(historyText)
     let result = ''
     await streamWith(modelKey, [{ role: 'user', content: prompt }], chunk => { result += chunk })
     return result.trim()
@@ -346,6 +348,7 @@ export function useStreaming() {
   ) {
     const sessionStore = useSessionStore()
     const uiStore = useUiStore()
+    const lang = uiStore.lang
     const s = sessionStore.curSess
     if (!s || !strategies.length || !modelKey || !qNodeIds.length) return
 
@@ -388,17 +391,8 @@ export function useStreaming() {
 
     if (!cardParts) return
 
-    const buildPrompt = (strategy: ConsolidationStrategy): string => {
-      if (strategy === 'best')
-        return `以下の複数の質問と回答を総合的に評価し、最も適切・質の高い回答をしたモデルを判定してください。各回答の強みと弱みを述べ、最適なモデルを選んだ理由を示してください。\n\n${cardParts}`
-      if (strategy === 'merge')
-        return `以下の複数の質問と回答を統合し、一つの包括的な回答にまとめてください。\n\n${cardParts}`
-      if (strategy === 'diff')
-        return `以下の複数の質問と回答を比較し、各回答の違い・独自の観点・矛盾点・共通点を整理してください。\n\n${cardParts}`
-      if (strategy === 'custom')
-        return `${customInstruction}\n\n[対象]\n${cardParts}`
-      return ''
-    }
+    const buildPrompt = (strategy: ConsolidationStrategy): string =>
+      T[lang].aiConsolidatePrompt(strategy, cardParts, customInstruction) ?? ''
 
     // consolidationノードを一括作成（parentIds で全カードを参照）
     const consNodes = strategies.map(strategy => {

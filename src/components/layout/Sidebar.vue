@@ -163,7 +163,7 @@ const vaultIndicator = computed(() => {
         :class="['vault-ind', vaultIndicator.cls]"
         :title="vaultIndicator.tip"
       >{{ vaultIndicator.icon }}</span>
-      <button id="btn-lang" @click="uiStore.toggleLang()">{{ lang === 'ja' ? 'EN' : 'JA' }}</button>
+      <button id="btn-lang" @click="uiStore.toggleLang()">{{ lang === 'ja' ? 'JA' : 'EN' }}</button>
     </div>
   </aside>
 

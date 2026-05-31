@@ -72,6 +72,8 @@ export interface TranslationKeys {
   }
   aiSumPrompt: (q: string, parts: string) => string
   aiMergePrompt: (strategy: string, nodes: Array<{ label: string; content: string }>) => string
+  aiConsolidatePrompt: (strategy: string, parts: string, custom: string) => string
+  aiCompressPrompt: (history: string) => string
 
   // ── 新規: 汎用アクション ──
   copy: string
@@ -264,6 +266,14 @@ export const T: Record<Lang, TranslationKeys> = {
         handoff: `以下の回答の中から最も有望なものを選び、さらに詳細に展開してください。（日本語で返答してください）\n\n${body}`,
       } as Record<string, string>)[strategy] ?? body
     },
+    aiConsolidatePrompt: (strategy: string, parts: string, custom: string) => ({
+      best:   `以下の複数の質問と回答を総合的に評価し、最も適切・質の高い回答をしたモデルを判定してください。各回答の強みと弱みを述べ、最適なモデルを選んだ理由を示してください。（日本語で返答してください）\n\n${parts}`,
+      merge:  `以下の複数の質問と回答を統合し、一つの包括的な回答にまとめてください。（日本語で返答してください）\n\n${parts}`,
+      diff:   `以下の複数の質問と回答を比較し、各回答の違い・独自の観点・矛盾点・共通点を整理してください。（日本語で返答してください）\n\n${parts}`,
+      custom: `${custom}\n\n[対象]\n${parts}`,
+    } as Record<string, string>)[strategy] ?? parts,
+    aiCompressPrompt: (history: string) =>
+      `以下の会話履歴を、重要な情報・文脈・結論を保ちながら簡潔に要約してください。要約のみを出力し、説明文は不要です。（日本語で返答してください）\n\n${history}`,
 
     // ── 新規: 汎用アクション ──
     copy: 'コピー',
@@ -455,6 +465,14 @@ export const T: Record<Lang, TranslationKeys> = {
         handoff: `Select the most promising response below and expand on it in greater depth. (Respond in English)\n\n${body}`,
       } as Record<string, string>)[strategy] ?? body
     },
+    aiConsolidatePrompt: (strategy: string, parts: string, custom: string) => ({
+      best:   `Evaluate the following questions and responses comprehensively, and determine which model gave the most appropriate and high-quality answer. Describe the strengths and weaknesses of each response and explain your choice. (Respond in English)\n\n${parts}`,
+      merge:  `Consolidate the following questions and responses into one comprehensive answer. (Respond in English)\n\n${parts}`,
+      diff:   `Compare the following questions and responses, and organize the differences, unique perspectives, contradictions, and common points. (Respond in English)\n\n${parts}`,
+      custom: `${custom}\n\n[Target]\n${parts}`,
+    } as Record<string, string>)[strategy] ?? parts,
+    aiCompressPrompt: (history: string) =>
+      `Summarize the following conversation history concisely while preserving important information, context, and conclusions. Output the summary only, no explanations needed. (Respond in English)\n\n${history}`,
 
     // ── 新規: 汎用アクション ──
     copy: 'Copy',
