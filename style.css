@@ -186,12 +186,19 @@ select{font-size:inherit;color:#111}
 /* Expand btn */
 #btn-expand{
   position:fixed;top:12px;left:8px;z-index:100;
-  background:#1a1a2e;color:#ececec;border:none;
-  width:30px;height:30px;border-radius:7px;
-  font-size:1rem;display:none;align-items:center;justify-content:center;
-  box-shadow:0 2px 8px rgba(0,0,0,.4);transition:.15s;
+  display:none;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:99px;
+  border:1px solid rgba(255,255,255,.45);
+  background:rgba(255,255,255,.18);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  color:#1e1b4b;font-size:1rem;
+  box-shadow:0 4px 16px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.5);
+  transition:.14s;cursor:pointer;
 }
-#btn-expand:hover{background:#2d2d50}
+#btn-expand:hover{
+  background:rgba(255,255,255,.28);
+  border-color:rgba(255,255,255,.6);
+}
 
 /* ═══════════════════════════════════════
    MAIN
@@ -1808,17 +1815,29 @@ select{font-size:inherit;color:#111}
 
 /* TopBar 送信ログトグルボタン */
 .tb-log-btn{
-  margin-left:auto;
-  background:none;border:1px solid transparent;
-  border-radius:7px;padding:4px 8px;
-  display:flex;align-items:center;gap:4px;
-  color:#9ca3af;font-size:.75rem;cursor:pointer;
-  transition:background .12s,color .12s,border-color .12s;
+  display:flex;align-items:center;gap:6px;
+  padding:7px 12px;border-radius:99px;
+  border:1px solid rgba(255,255,255,.45);
+  background:rgba(255,255,255,.18);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  color:#1e1b4b;font-size:.8rem;font-weight:500;
+  box-shadow:0 4px 16px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.5);
+  transition:.14s;cursor:pointer;white-space:nowrap;
 }
-.tb-log-btn:hover{background:#f3f4f6;color:#374151;border-color:#e5e7eb}
-.tb-log-btn-on{color:#4338ca;background:#ede9fe;border-color:#c4b5fd}
-.tb-log-btn-on:hover{background:#ddd6fe}
-.tb-log-btn .material-icons{font-size:17px}
+.tb-log-btn:hover{
+  background:rgba(255,255,255,.28);
+  box-shadow:0 6px 20px rgba(99,102,241,.2),inset 0 1px 0 rgba(255,255,255,.6);
+  border-color:rgba(255,255,255,.6);
+}
+.tb-log-btn-on{
+  background:rgba(237,233,254,.35)!important;
+  border-color:rgba(99,102,241,.5)!important;
+  color:#3730a3!important;
+}
+.tb-log-btn-on:hover{background:rgba(237,233,254,.5)!important}
+.tb-log-btn .material-icons{font-size:16px}
+
+/* サイドバー展開ボタン（閉じた時） */
 /* 送信ログパネルの折りたたみ可能スクロール領域 */
 #ctx-log-panel .clp-scroll{flex:1;overflow-y:auto;overflow-x:hidden}
 

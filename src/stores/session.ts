@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { Session, BraidedNode, DisplayTurn } from '@/types'
+import { useUiStore } from '@/stores/ui'
+import { T } from '@/i18n'
 
 export function uid(): string {
   return Math.random().toString(36).slice(2, 10)
@@ -315,7 +317,8 @@ export const useSessionStore = defineStore('session', () => {
 
     const merges = s.nodes.filter(n => n.parentIds)
     if (merges.length) {
-      lines.push('## 🔀 マージ結果', '')
+      const lang = useUiStore().lang
+      lines.push(`## 🔀 ${T[lang].mergeLabel}`, '')
       for (const m of merges) {
         const strat = (m.strategy ?? '').split(' — ')[0]
         lines.push(`### ${strat}`, '', m.content || '', '')

@@ -200,11 +200,11 @@ export const T: Record<Lang, TranslationKeys> = {
     qLabel: '💬 質問への追加指示',
     qPh: '追加の指示を入力…',
     mergeBtn: '🔀',
-    mergeDialogTitle: '🔀 ブランチを統合',
-    mergeSelectLabel: '統合するノードを選択',
-    mergeStrategyLabel: '統合戦略',
+    mergeDialogTitle: '🔀 ブランチをマージ',
+    mergeSelectLabel: 'マージするノードを選択',
+    mergeStrategyLabel: 'マージ戦略',
     cancelBtn: 'キャンセル',
-    mergeExecBtn: '統合して質問',
+    mergeExecBtn: 'マージして質問',
     modalTitle: '⚙ 設定',
     ollamaUrlLabel: '接続先 URL',
     ollamaHint: 'OLLAMA_ORIGINS=* が必要です',
@@ -297,11 +297,11 @@ export const T: Record<Lang, TranslationKeys> = {
     // ── 新規: CompositeCard ──
     excludeFromSigma: '統合から除外する',
     includeInSigma: '統合に含める',
-    selectForConsolidate: '統合対象として選択',
+    selectForConsolidate: 'マージ対象として選択',
     modelResponses: 'モデル回答',
     pendingInput: '入力待ち…',
-    reconsolidate: '統合を再実行',
-    consolidateResponses: '回答を統合する',
+    reconsolidate: 'マージを再実行',
+    consolidateResponses: 'マージする',
     newQuestionBtn: '✏️ 新しい質問',
 
     // ── 新規: チャット共通ラベル ──
@@ -325,10 +325,10 @@ export const T: Record<Lang, TranslationKeys> = {
     // ── 新規: 統合戦略 ──
     consolidationStrategies: {
       best:    { label: '最適回答判定', desc: '最も適切な回答のモデルを判定' },
-      merge:   { label: '統合',         desc: '全回答を一つにまとめる' },
+      merge:   { label: 'まとめる',     desc: '全回答を一つにまとめる' },
       diff:    { label: '差異抽出',     desc: '全回答の違いを明確化' },
       custom:  { label: 'カスタム指示', desc: '独自の指示で処理' },
-      default: { label: '統合結果' },
+      default: { label: 'マージ結果' },
     },
 
     // ── 新規: コンテキスト送信方式バッジ ──
@@ -496,11 +496,11 @@ export const T: Record<Lang, TranslationKeys> = {
     // ── 新規: CompositeCard ──
     excludeFromSigma: 'Exclude from synthesis',
     includeInSigma: 'Include in synthesis',
-    selectForConsolidate: 'Select for consolidation',
+    selectForConsolidate: 'Select for merge',
     modelResponses: 'Model responses',
     pendingInput: 'Waiting for input…',
-    reconsolidate: 'Re-run consolidation',
-    consolidateResponses: 'Consolidate responses',
+    reconsolidate: 'Re-run merge',
+    consolidateResponses: 'Merge',
     newQuestionBtn: '✏️ New question',
 
     // ── 新規: チャット共通ラベル ──
@@ -523,11 +523,11 @@ export const T: Record<Lang, TranslationKeys> = {
 
     // ── 新規: 統合戦略 ──
     consolidationStrategies: {
-      best:    { label: 'Best Answer',          desc: 'Determine the best model response' },
-      merge:   { label: 'Merge',                desc: 'Combine all responses into one' },
-      diff:    { label: 'Diff',                 desc: 'Highlight differences between responses' },
-      custom:  { label: 'Custom Instruction',   desc: 'Process with custom instructions' },
-      default: { label: 'Consolidation Result' },
+      best:    { label: 'Best Answer',        desc: 'Determine the best model response' },
+      merge:   { label: 'Synthesize',         desc: 'Combine all responses into one' },
+      diff:    { label: 'Diff',               desc: 'Highlight differences between responses' },
+      custom:  { label: 'Custom Instruction', desc: 'Process with custom instructions' },
+      default: { label: 'Merge Result' },
     },
 
     // ── 新規: コンテキスト送信方式バッジ ──

@@ -23,8 +23,10 @@ const TreeNode = defineComponent({
         return `Q${seq} ${(n.content ?? '').slice(0, 18)}`
       }
       if (n.type === 'r')     return n.model?.split(':').pop() ?? '?'
-      if (n.type === 'sigma') return lang.value === 'ja' ? 'Σ 要約' : 'Σ Summary'
-      return lang.value === 'ja' ? '🔀 マージ' : '🔀 Merge'
+      if (n.type === 'sigma')         return lang.value === 'ja' ? 'Σ 要約' : 'Σ Summary'
+      if (n.type === 'consolidation') return lang.value === 'ja' ? '🔀 マージ' : '🔀 Merge'
+      if (n.type === 'merge')         return lang.value === 'ja' ? '🔀 マージ' : '🔀 Merge'
+      return '?'
     })
 
     const TYPE_DOT: Record<string, string>   = { q: 'type-q', sigma: 'type-sigma', merge: 'type-merge', r: '' }

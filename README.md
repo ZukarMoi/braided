@@ -15,8 +15,8 @@ Send a question to multiple AI models at once, branch from any response to dig d
 ### Multi-model parallel comparison
 ![Multi-model comparison](docs/screenshots/multi-model-comparison.png)
 
-### Consolidation & Diff results
-![Consolidation result](docs/screenshots/consolidation-result.png)
+### Merge & Diff results
+![Merge result](docs/screenshots/consolidation-result.png)
 
 ### Welcome & setup
 ![Welcome screen](docs/screenshots/welcome.png)
@@ -36,7 +36,10 @@ Unlike typical AI chat apps that give you one answer to move on from, Braided tr
 **Human-curated context, not RAG.**  
 Rather than relying on automated retrieval (RAG) to decide what's relevant, Braided puts that judgment in your hands. Exclude a response, summarize a thread, inject your own notes, branch from a specific insight — you shape the context that each model sees. This keeps local models fast and the conversation meaningful, without heavy infrastructure.
 
-> 複数のAIモデルを相手にしたセルフブレインストーミングツールです。AIの回答を"ノード"として分岐・要約・取捨選択しながら思考を編み上げます。文脈管理を人間が主導することで、RAGなどの重い仕組みなしにローカルモデルでも軽快に動作します。
+**Transparency at the input layer — a practical approach to XAI.**  
+AI models are black boxes. Braided can't open them. Instead, it makes the *input* fully visible: the Send log shows exactly what context each model received. Rather than explaining how a model thinks, Braided shows what it was given to think about. Comparing multiple black boxes side by side turns disagreement into signal.
+
+> 複数のAIモデルを相手にしたセルフブレインストーミングツールです。AIの回答を"ノード"として分岐・要約・取捨選択しながら思考を編み上げます。文脈管理を人間が主導することで、RAGなどの重い仕組みなしにローカルモデルでも軽快に動作します。入力を完全に可視化するSend logにより、入口側からの擬似的なXAI（説明可能AI）を実現します。
 
 ---
 
@@ -46,7 +49,7 @@ Rather than relying on automated retrieval (RAG) to decide what's relevant, Brai
 - **Model policy comparison** — Send the same question to multiple models simultaneously and observe how their responses diverge. Particularly effective for politically sensitive topics, ethical dilemmas, or contested facts — where differences in training data, safety guidelines, and response policies become plainly visible across models in a single view. The goal is not consensus — it's visibility into disagreement.
 - **Branch from any response** — Dig deeper into any direction without losing context
 - **Σ (Sigma) summarization** — Let an AI synthesize all responses into a single summary
-- **Consolidation** — Compare, merge, or diff responses across multiple questions
+- **Merge** — Compare, synthesize, or diff responses within or across multiple questions
 - **Manual context cards** — Inject your own text into the conversation context
 - **Client-side context management** — Braided builds and controls the full conversation context on your device. You decide what each model sees: exclude specific responses, include branch threads in summaries, or inject custom text — without relying on any cloud memory service. Automatic history compression keeps local models (Ollama / LM Studio) within their context window limits, and a context log lets you inspect exactly what was sent to each model.
 - **Export** — Download sessions as Markdown or sync to an Obsidian vault

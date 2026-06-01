@@ -74,12 +74,12 @@ defineExpose({ resetState })
   <div v-if="open" id="merge-overlay" @click="overlayClick">
     <div id="merge-dialog">
       <div class="dialog-head">
-        <h2>🔀 {{ lang === 'ja' ? 'ブランチを統合' : 'Merge Branches' }}</h2>
+        <h2>{{ T[lang].mergeDialogTitle }}</h2>
         <button class="modal-close" @click="close">✕</button>
       </div>
       <div class="dialog-body">
         <div class="field">
-          <label>{{ lang === 'ja' ? '統合するノードを選択' : 'Select nodes to merge' }}</label>
+          <label>{{ T[lang].mergeSelectLabel }}</label>
           <div id="merge-node-list">
             <div
               v-for="n in candidates"
@@ -98,7 +98,7 @@ defineExpose({ resetState })
           </div>
         </div>
         <div class="field">
-          <label>{{ lang === 'ja' ? '統合戦略' : 'Merge strategy' }}</label>
+          <label>{{ T[lang].mergeStrategyLabel }}</label>
           <div id="merge-strategies">
             <div
               v-for="sk in strategies"
@@ -113,8 +113,8 @@ defineExpose({ resetState })
         </div>
       </div>
       <div class="dialog-foot">
-        <button class="btn-cancel" @click="close">{{ lang === 'ja' ? 'キャンセル' : 'Cancel' }}</button>
-        <button class="btn-primary" @click="handleExecuteMerge">{{ lang === 'ja' ? '統合して質問' : 'Merge & Ask' }}</button>
+        <button class="btn-cancel" @click="close">{{ T[lang].cancelBtn }}</button>
+        <button class="btn-primary" @click="handleExecuteMerge">{{ T[lang].mergeExecBtn }}</button>
       </div>
     </div>
   </div>
