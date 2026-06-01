@@ -352,6 +352,20 @@ export function useStreaming() {
     const s = sessionStore.curSess
     if (!s || !strategies.length || !modelKey || !qNodeIds.length) return
 
+    // continueModel チェーンを再帰的に辿ってテキスト化
+    const getContinueChain = (rNodeId: string): string => {
+      const continueQs = s.nodes.filter(n =>
+        n.type === 'q' && n.continueModel && n.parentId === rNodeId
+      )
+      if (!continueQs.length) return ''
+      return continueQs.map(cq => {
+        const cqRs = s.nodes.filter(n => n.parentId === cq.id && n.type === 'r' && !n.excluded)
+        const cqText = cqRs.map(r => `  [${r.model?.split(':').pop()}]\n  ${r.content}`).join('\n\n---\n\n')
+        const deeper = cqRs.map(r => getContinueChain(r.id)).filter(Boolean).join('\n\n')
+        return `  [続けて質問: ${cq.content}]\n${cqText}${deeper ? '\n\n' + deeper : ''}`
+      }).join('\n\n')
+    }
+
     // 各QノードのRノードをまとめてパーツ化
     const cardParts = qNodeIds.map(qNodeId => {
       const qNode = sessionStore.getNode(s, qNodeId)
@@ -369,6 +383,13 @@ export function useStreaming() {
           : `  [${r.model?.split(':').pop()}]\n  ${r.content}`
       ).join('\n\n---\n\n')
 
+      // continueModel チェーンを各Rノードから追加
+      const continueTexts = rNodes
+        .filter(r => r.type === 'r')
+        .map(r => getContinueChain(r.id))
+        .filter(Boolean)
+        .join('\n\n')
+
       // _sigmaInclude=true のブランチQ内容も追加
       const rNodeIdSet = new Set(rNodes.map(r => r.id))
       const branchQs = s.nodes.filter(n => {
@@ -378,13 +399,14 @@ export function useStreaming() {
         return false
       })
       let fullRText = rText
+      if (continueTexts) fullRText += '\n\n' + continueTexts
       if (branchQs.length) {
         const branchTexts = branchQs.map(bq => {
           const bqRs = s.nodes.filter(r => r.parentId === bq.id && r.type === 'r' && !r.excluded)
           const bqText = bqRs.map(r => `[${r.model?.split(':').pop()}]\n${r.content}`).join('\n\n---\n\n')
           return `  [追加質問: ${bq.content}]\n  ${bqText}`
         }).join('\n\n')
-        fullRText = `${rText}\n\n${branchTexts}`
+        fullRText += '\n\n' + branchTexts
       }
       return `[Q${seq}: ${qNode?.content ?? ''}]\n${fullRText}`
     }).filter(Boolean).join('\n\n===\n\n')
